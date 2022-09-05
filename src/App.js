@@ -1,18 +1,22 @@
-import logo from './logo.svg';
+
 import './App.css';
 import NavBar from './components/navBar/NavBar';
 import "./components/navBar/navBarstyles.css";
 import "./components/CartWidget/estilocarro.css";
 import "./components/itemListContainer/itemListContainerEstilo.css"
 import ItemListContainer from './components/itemListContainer/itemListContainer';
+import ItemCount from './components/itemCount/ItemCount';
+import "./components/itemCount/itemCountEstilo.css";
+
 
 function App() {
+  const stock = 10 
   return (
     <div className="App">
       <NavBar /> 
-      <ItemListContainer greeting='Aprovecha las ofertas!' />
       <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+      <ItemCount  stock={stock} />
+      <ItemListContainer/>
       </header>
     </div>
   );
