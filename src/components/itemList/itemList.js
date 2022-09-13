@@ -1,4 +1,5 @@
 import Item from '../item/item';
+import '../itemList/itemListEstilo.css'
 import { Link } from 'react-router-dom';
 
 const ItemList = ({lista}) => {
