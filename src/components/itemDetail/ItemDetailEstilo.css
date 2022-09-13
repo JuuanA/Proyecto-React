@@ -1,0 +1,11 @@
+.detail-image   {
+    width: auto;
+    height: 900px;
+}
+
+
+.itemDetail {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
