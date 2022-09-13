@@ -1,13 +1,13 @@
 .listContenedor {
     height: auto;
     width: auto;
-    display: flex;
-
+    display: flex; 
+    padding: 30px;
     flex-direction: row;
 
     flex-wrap: wrap;
 
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .listContenedor h2 {

@@ -4,7 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 export default function NavBar(){
     return <nav className="navbar"> 
-    <a href="" className="titulo">Fake Store</a>
+   <NavLink className={"titulo"} to={'/'}>
+            Fake Store
+        </NavLink>
     <ul> 
         <NavLink to={'/'}>
             Inicio
