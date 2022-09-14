@@ -7,7 +7,7 @@ import '../src/components/itemDetail/ItemDetailEstilo.css';
 import ItemListContainer from './pages/itemListContainer/itemListContainer';
 import ItemDetailContainer from './pages/ItemDetailContainer/itemDetailContainer'
 /* import ItemCount from './components/itemCount/ItemCount'; */
-import "./components/itemCount/itemCountEstilo.css";
+import './components/itemCount/itemCountEstilo.css'
 import { BrowserRouter , Routes , Route } from 'react-router-dom'; 
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
       <Route path="details/:id" element={<ItemDetailContainer/> } />
       <Route path="category/:categoryName" element={<ItemListContainer/>} /> 
     </Routes>
-{/*     <ItemCount/> */}
     </BrowserRouter>
   )
 }

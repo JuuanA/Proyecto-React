@@ -1,20 +1,28 @@
-import { useState } from "react"
+import '../itemCount/itemCountEstilo.css'
+import { Link } from 'react-router-dom';
 
-const ItemCount = (props) => {
-    const [items , setItems] = useState(0)
-
-    const suma = () =>  items  < props.stock  ? setItems(items + 1) : alert('No hay mas en Stock') 
-    const resta = () =>  items  > 0 ? setItems(items - 1) : alert("No se pueden ingresar valores por debajo de 0")
+const ItemCount = ({setContador , items}) => {
+    const handleClick = () => {
+        {alert (`Agregaste ${items} items al carrito`)}
+    }
+    const onAdd = () => {
+        setContador(items + 1)
+    }
+    const onRemove = () => {
+        if (items === 0 ){
+            return
+        }
+        setContador(items - 1)
+    }
         return (
     <div className="divContador">
         <div>Selecciono {items} items </div>
-        <div>Stock {props.stock}</div>
-        <button onClick={suma}>Suma</button>
-        <button onClick={resta}>Resta</button>
-        <button onClick={()=>{alert (`Agregaste ${items} items al carrito`)}}>Agregar al carrito</button>
-
+        <button onClick={onAdd} className="botonSuma">Suma</button>
+        <button onClick={onRemove} className="botonResta">Resta</button>        
+        <Link to={'/cart'} className="link" onClick={handleClick}> Ir al carrito</Link>
     </div>
-        );
+
+    );
 };
 
 export default ItemCount;
