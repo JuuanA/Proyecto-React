@@ -1,10 +1,19 @@
 import { useEffect , useState } from "react";
 import ItemList from "../../components/itemList/itemList";
+import { useParams } from "react-router-dom";
 
 export const ItemListContainer = () => {
     const [productosLista , setProductosLista] = useState([]);
+    const {categoryName} = useParams();
+
     const getProducts = async () => {
-        fetch('https://fakestoreapi.com/products' ,{
+        let url;
+        if (categoryName) {
+            url = `https://fakestoreapi.com/products/category/${categoryName}`;
+        }else {
+            url = 'https://fakestoreapi.com/products';
+        }
+        fetch(url ,{
             method : 'GET',
             headers: {'Content-Type': 'application/json',
         },
@@ -13,7 +22,7 @@ export const ItemListContainer = () => {
             .then(data=>setProductosLista(data))
     }
     useEffect(() => {
-        getProducts()}, [])
+        getProducts()}, [categoryName])
 
     return (
         <div className="divLista">

@@ -9,7 +9,7 @@ export const ItemDetail = ({productos}) => {
             <div>
                 <p>{productos.description}</p>
                 <p>{productos.category}</p>
-                <p>{productos.price}</p>
+                <p className="precio">Precio ${productos.price} </p>
             </div>
         </div>
     );

@@ -1,3 +1,6 @@
+import './../item/itemEstilo.css'
+
+
 const Item = ({titulo, precio , image}) => {
     return (
         <div>
