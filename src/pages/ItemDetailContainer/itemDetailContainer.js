@@ -16,10 +16,18 @@ const ItemDetailContainer = () => {
 useEffect(() => {
     getProducts(); }, 
     [id]);
+
+/*     const Componentee = false ;
+    function Componente ({condition}) {
+        return <h2 className="detalles"> {condition ===  Componentee ? <ItemDetail productos={productos} />
+        : 'Obteniendo detalles...' } </h2>;
+         */
+   /*  } */
     return (
         <div className="fondoDetalles">
+           {/*  <Componente /> */}
             {productos ? (<ItemDetail productos={productos} />)
-            : (<h2>Obteniendo detalles...</h2>
+            : (<h2 className="detalles">Obteniendo detalles...</h2>
             )}
         </div>
     );

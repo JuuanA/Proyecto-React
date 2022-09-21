@@ -1,5 +1,5 @@
 .divContador {
-    height: 100px;
+    height: 50px;
     width: auto;
     background: rgb(58, 159, 253);
     margin: 10px;
@@ -7,12 +7,14 @@
     font-size: 50px;
     display: flex;
     align-items: center;
-
+    justify-content: center;
+    justify-content: space-between
 }
 
 
 button {
-    margin: 20px;
+    margin: 15px;  
+    padding: 10px;
     font-size: 20px;
 }
 
@@ -20,6 +22,5 @@ button {
 .link {
     text-decoration: none;
     color: black;
-    font-size: 40px;
     margin: 30px;
 }

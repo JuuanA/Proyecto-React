@@ -1,3 +1,14 @@
 .fondoDetalles {
     background-color: #76cdf5;
 }
+
+
+
+.detalles {
+    font-size: 60px;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
