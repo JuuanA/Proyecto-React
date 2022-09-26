@@ -1,24 +1,39 @@
 import { useState } from "react";
-import { CartContext } from "./CartContext";
+import { CartContext } from './CartContext';
 
 
+export const CartProvider = ({ children }) => {
+    const [cart , setCart] = useState([]);
 
-export const CartProvider = ({children}) => {
-    const [carrito , setCarrito] = useState([]);
+    const addToCart = ( item, quantity) => 
+        { setCart([...cart, { ...item, quantity}])
+        console.log('cart', [...cart,{...item, quantity}]);
 
-    const addAlCarrito = (items , cantidad ) => {
-        if (estaEnCarrito(items.id)) {
+        if (estaEnCarrito(item.id)) {
             alert('Este Producto Ya esta en el carrito');
         } else {
-            setCarrito([...carrito, { ...items , cantidad }])
+            setCart([...cart, { ...item, quantity}])
         }
-        console.log('carrito', [...carrito,{...items, cantidad}]);
+        console.log('cart', [...cart,{...item, quantity}]);
+    }; 
+        const estaEnCarrito = (id) => {
+        return cart.some((item) => item.id === id); 
     };
-    const estaEnCarrito = (id) => {
-        return carrito.some((items) => items.id === id);
+
+    const removeItem = (productoId) => {
+        let nuevoArray = [];
+        cart.forEach((product) =>{
+        if (product.id === productoId) {
+            console.log(product)
+        }else {
+            nuevoArray.push(product)
+        }
+        });
+        setCart(nuevoArray);
     };
+    
     return (
-        <CartContext.Provider value={{ carrito, addAlCarrito}}>
+        <CartContext.Provider value={{ cart, addToCart, removeItem}}>
             {children}
         </CartContext.Provider>
     );

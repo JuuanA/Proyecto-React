@@ -1,0 +1,29 @@
+.carrito {
+    font-size: 20px;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
+.titutloCarrito {
+    font-size: 50px;
+    text-align: center;
+    background: #51c5fc;
+}
+
+.tituloVacio {
+    font-size: 50px;
+    text-align: center;
+    background: #51c5fc;
+}
+.divCarro {
+    background-color: #76cdf5;
+    height: auto;
+    width: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

@@ -1,6 +1,6 @@
 import { useEffect , useState } from "react";
 import ItemList from "../../components/itemList/itemList";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const ItemListContainer = () => {
     const [productosLista , setProductosLista] = useState([]);
@@ -14,7 +14,6 @@ export const ItemListContainer = () => {
             url = 'https://fakestoreapi.com/products';
         }
         fetch(url ,{
-            method : 'GET',
             headers: {'Content-Type': 'application/json',
         },
     })

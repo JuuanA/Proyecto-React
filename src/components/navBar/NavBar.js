@@ -1,6 +1,6 @@
 
 import Carrito from '../CartWidget/cartWidget';
-import { NavLink } from 'react-router-dom';
+import { Link , NavLink } from 'react-router-dom';
 
 export default function NavBar(){
     return <nav className="navbar"> 
@@ -22,6 +22,9 @@ export default function NavBar(){
             <NavLink to={'category/jewelery'}>
                 Joyas    
             </NavLink>
+        </li>
+        <li>
+        <Link to="/Cart">Carrito</Link>
         </li>
     </ul>
     <Carrito />

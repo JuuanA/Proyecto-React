@@ -1,25 +1,23 @@
 import '../itemCount/itemCountEstilo.css'
 import { Link } from 'react-router-dom';
 
-const ItemCount = ({setContador , items}) => {
-    const handleClick = () => {
-        {alert (`Agregaste ${items} items al carrito`)}
-    }
+
+const ItemCount = ({count , setCount}) => {
     const onAdd = () => {
-        setContador(items + 1)
+        setCount(count + 1)
     }
     const onRemove = () => {
-        if (items === 0 ){
+        if (count === 0 ){
             return
         }
-        setContador(items - 1)
+        setCount(count - 1)
     }
         return (
     <div className="divContador">
-        <div>Selecciono {items} items </div>
+        <div>Selecciono {count} items </div>
         <button onClick={onAdd} className="botonSuma">Suma</button>
         <button onClick={onRemove} className="botonResta">Resta</button>        
-        <Link to={'/cart'} className="link" onClick={handleClick}> Ir al carrito</Link>
+        <Link to={'/cart'} className="link" >Ir al carrito</Link>
     </div>
 
     );
