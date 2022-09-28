@@ -10,7 +10,21 @@ import './components/itemCount/itemCountEstilo.css'
 import { BrowserRouter , Routes , Route } from 'react-router-dom'; 
 import { CartProvider } from './context/CartProvider.js'
 import Cart from './components/cart/Cart';
-import count from './components/itemCount/ItemCount'
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDyo7g1FAEzv5p5R23BF6Nfy71thvkFzKc",
+  authDomain: "coderhouse-ecommerce-a8028.firebaseapp.com",
+  projectId: "coderhouse-ecommerce-a8028",
+  storageBucket: "coderhouse-ecommerce-a8028.appspot.com",
+  messagingSenderId: "974824047398",
+  appId: "1:974824047398:web:ee3b976f9b1d7206f4f7e7"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 function App() {
   return (

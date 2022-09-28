@@ -1,6 +1,7 @@
 
 import Carrito from '../CartWidget/cartWidget';
 import { Link , NavLink } from 'react-router-dom';
+import logo from '../CartWidget/cartimg.svg'
 
 export default function NavBar(){
     return <nav className="navbar"> 
@@ -10,23 +11,24 @@ export default function NavBar(){
     <ul > 
         <li>
         <NavLink to={'/'}>
-            Inicio
+            Todos los productos
         </NavLink>
         </li>
         <li>
-            <NavLink to={'category/electronics'}>
-                Electronica 
+            <NavLink to={'category/men clothes'}>
+                Ropa de hombre 
             </NavLink>
         </li>
         <li>
-            <NavLink to={'category/jewelery'}>
+            <NavLink to={'category/joyas'}>
                 Joyas    
             </NavLink>
         </li>
         <li>
-        <Link to="/Cart">Carrito</Link>
+        <Link to="/Cart"> 
+        <img src={logo} className="carrito"></img>
+        </Link>
         </li>
     </ul>
-    <Carrito />
     </nav>
 } 

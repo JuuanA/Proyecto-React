@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 export const ItemDetail = ({productos}) => {
     const [count , setCount] = useState(1)
-
     const {addToCart} = useContext(CartContext);
     function onAdd (productos, quantity) {
         addToCart(productos, quantity);

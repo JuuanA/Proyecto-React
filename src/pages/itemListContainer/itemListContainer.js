@@ -1,25 +1,39 @@
 import { useEffect , useState } from "react";
 import ItemList from "../../components/itemList/itemList";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
+import { getFirestore, getDocs, collection , query, where} from 'firebase/firestore';
 
 export const ItemListContainer = () => {
     const [productosLista , setProductosLista] = useState([]);
     const {categoryName} = useParams();
 
-    const getProducts = async () => {
-        let url;
+    const getProducts = () => {
+        const db = getFirestore();
+
+        const querySnap =  collection(db, 'items');
+
         if (categoryName) {
-            url = `https://fakestoreapi.com/products/category/${categoryName}`;
-        }else {
-            url = 'https://fakestoreapi.com/products';
+            const queryFiltro = query (querySnap, where("categoryId", '==', categoryName)
+            );
+            getDocs(queryFiltro).then((respuesta) => {
+            const data = respuesta.docs.map((product) => {
+                console.log(product.data());
+                return { id: product.id, ...product.data() };
+            });
+            setProductosLista(data);
+        });
         }
-        fetch(url ,{
-            headers: {'Content-Type': 'application/json',
-        },
-    })
-            .then(res=>res.json())
-            .then(data=>setProductosLista(data))
+        else {
+        getDocs(querySnap).then((respuesta) => {
+            const data = respuesta.docs.map((product) => {
+                console.log(product.data());
+                return { id: product.id, ...product.data() };
+            });
+            setProductosLista(data);
+        });
     }
+    };
+
     useEffect(() => {
         getProducts()}, [categoryName])
 
@@ -28,6 +42,5 @@ export const ItemListContainer = () => {
             <ItemList  lista={productosLista}/>
         </div>
         );
-};
-
+    };
 export default ItemListContainer;
