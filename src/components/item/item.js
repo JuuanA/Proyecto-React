@@ -6,7 +6,7 @@ const Item = ({titulo, precio , image}) => {
         <div>
             <img height={'250px'}width={'250px'} src={image} alt={titulo} />
             <h2>{titulo}</h2>
-            <h3>{precio}</h3>
+            <h3>$ {precio}</h3>
         </div>
     );
 };

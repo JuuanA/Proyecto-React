@@ -9,38 +9,28 @@ export const ItemListContainer = () => {
 
     const getProducts = () => {
         const db = getFirestore();
+        const queryBase = collection(db, 'items');
+        const querySnapshot = categoryName
+            ? query(queryBase, where('categoryId', '==', categoryName))
+            : queryBase ;
 
-        const querySnap =  collection(db, 'items');
+            getDocs(querySnapshot).then((response) => {
+                const data = response.docs.map((product) => {
+                    return { id: product.id, ...product.data() };
+                });
+                setProductosLista(data);
+                });
+            };
 
-        if (categoryName) {
-            const queryFiltro = query (querySnap, where("categoryId", '==', categoryName)
-            );
-            getDocs(queryFiltro).then((respuesta) => {
-            const data = respuesta.docs.map((product) => {
-                console.log(product.data());
-                return { id: product.id, ...product.data() };
-            });
-            setProductosLista(data);
-        });
-        }
-        else {
-        getDocs(querySnap).then((respuesta) => {
-            const data = respuesta.docs.map((product) => {
-                console.log(product.data());
-                return { id: product.id, ...product.data() };
-            });
-            setProductosLista(data);
-        });
-    }
-    };
-
-    useEffect(() => {
-        getProducts()}, [categoryName])
+            useEffect(() => {
+                getProducts();
+            }, [categoryName]);
+            
 
     return (
         <div className="divLista">
             <ItemList  lista={productosLista}/>
         </div>
         );
-    };
+        };
 export default ItemListContainer;

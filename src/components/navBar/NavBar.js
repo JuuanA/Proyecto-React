@@ -6,7 +6,7 @@ import logo from '../CartWidget/cartimg.svg'
 export default function NavBar(){
     return <nav className="navbar"> 
     <NavLink className={"titulo"} to={'/'}>
-            Fake Store
+            Tienda virtual
         </NavLink>
     <ul > 
         <li>
@@ -22,6 +22,16 @@ export default function NavBar(){
         <li>
             <NavLink to={'category/joyas'}>
                 Joyas    
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to={'category/electronicos'}>
+                Electronicos    
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to={'category/ropa de mujer'}>
+                Ropa de dama    
             </NavLink>
         </li>
         <li>

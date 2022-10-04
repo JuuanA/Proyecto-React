@@ -7,26 +7,25 @@ import { getFirestore, doc , getDoc } from 'firebase/firestore';
 
 
 const ItemDetailContainer = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const [productos , setProductos] = useState();
 
     const db = getFirestore();
 
     const getProducts = () => {
-
-        const queryDoc = doc(db, 'items', id)
+    const queryDoc = doc(db, 'items', id);
 
     getDoc(queryDoc)
         .then((respuesta) => {
-            setProductos(respuesta.data());
+            setProductos({ id: respuesta.id , ...respuesta.data() });
         })
         .catch((error) => console.log(error));        
     };
 
     
-useEffect(() => {
-    getProducts(); }, 
-    [id]);
+    useEffect(() => {
+        getProducts();
+        }, [id]);
     return (
         <div className="fondoDetalles">
             {productos ? (<ItemDetail productos={productos} />)
