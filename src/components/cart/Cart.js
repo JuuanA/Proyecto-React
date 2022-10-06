@@ -9,6 +9,11 @@ const Cart = () => {
     const navigate = useNavigate();
     const {cart ,addToCart, removeItem , clear} = useContext(CartContext);
 
+    console.log(cart)
+
+    const totalCarro = () => {
+        return  cart.reduce ((acc, items ) => acc + (items.price * items.quantity)  , 0 ) }
+    
         const [order, setOrder] = useState({ 
             buyer: {
                 name: 'juan' ,
@@ -26,7 +31,9 @@ const Cart = () => {
                 ...currentOrder, 
                 items:cart , total: cart.reduce((acc, item ) => acc + item.price * item.quantity, 0 ), 
                 date: moment().format('DD/MM/YYYY, h:mm:ss a'), 
+                
         };
+        
     });
         const query = collection(db, 'orders');
         addDoc(query, order)
@@ -60,15 +67,6 @@ const Cart = () => {
             });
         };
 
-       /*  const queryUpdate = doc(db , 'orders', idOrders);
-        updateDoc(queryUpdate, order)
-        .then((respuesta) => {
-            console.log(respuesta)
-        })
-        .catch((error) => {
-        console.log(error);
-        }); */
-
     return (
     <div className="carrito">
         {cart.length === 0 ? (
@@ -87,9 +85,11 @@ const Cart = () => {
                     <img className="imagenCart" src={items.image} alt={items.title} />
                     <h3>{items.title}</h3>
                     <p>${items.price}</p>
-                    <p>Cantidad {items.quantity}</p>
+                    <p>Cantidad: {items.quantity}</p>
+                    <p>Total ${items.price * items.quantity}</p>
                     <button onClick={() => removeItem(items.id)}>Eliminar</button>
-            </div> ))};
+            </div> ))}
+            <h2>Total : ${parseInt(totalCarro())}</h2>
             <button onClick={crearOrden}>Terminar Compra</button>
             </>
         )}
